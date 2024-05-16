@@ -1,0 +1,6 @@
+g++ 45_timer_callbacks.cpp -w -lSDL2 -lSDL2_image -lSDL2_ttf -lSDL2_mixer -o 45_timer_callbacks
+45_timer_callbacks.cpp: In function ‘int main(int, char**)’:
+45_timer_callbacks.cpp:558:81: error: ‘reinterpret_cast’ from type ‘const char*’ to type ‘void*’ casts away qualifiers
+  558 |                         SDL_TimerID timerID = SDL_AddTimer( 3 * 1000, callback, reinterpret_cast<void*> ( "3 seconds waited!" ) );
+      |                                                                                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+make: *** [Makefile:23：all] 错误 1
