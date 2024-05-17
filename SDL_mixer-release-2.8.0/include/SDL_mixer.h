@@ -1,30 +1,44 @@
 /*
   SDL_mixer:  An audio mixer library based on the SDL library
+  SDL_mixer：基于SDL库的音频混合器库
   Copyright (C) 1997-2024 Sam Lantinga <slouken@libsdl.org>
+  版权所有 (C) 1997-2024 Sam Lantinga <slouken@libsdl.org>
 
   This software is provided 'as-is', without any express or implied
   warranty.  In no event will the authors be held liable for any damages
   arising from the use of this software.
+  本软件按“原样”提供，没有任何明示或暗示的保证。 在任何情况下，作者均不对因
+  使用本软件而造成的任何损害承担责任。
 
   Permission is granted to anyone to use this software for any purpose,
   including commercial applications, and to alter it and redistribute it
   freely, subject to the following restrictions:
+  任何人均有权出于任何目的（包括商业应用）使用本软件，并自由地修改和重新分发本软件，
+  但须遵守以下限制：
 
   1. The origin of this software must not be misrepresented; you must not
      claim that you wrote the original software. If you use this software
      in a product, an acknowledgment in the product documentation would be
      appreciated but is not required.
+     不得谎报本软件的出处； 您不得声称您编写了原始软件。 如果您在产品中使用此软件，
+     我们将不胜感激，但不是必需的。
+
   2. Altered source versions must be plainly marked as such, and must not be
      misrepresented as being the original software.
+     更改的源版本必须明确标记，并且不得歪曲为原始软件。
+
   3. This notice may not be removed or altered from any source distribution.
+     不得从任何来源分发中删除或更改本通知。
 */
 
 /**
  *  \file SDL_mixer.h
  *
  *  Header file for SDL_mixer library
+ *  SDL_mixer 库的头文件
  *
  * A simple library to play and mix sounds and musics
+ * 一个简单的库来播放和混合声音和音乐
  */
 #ifndef SDL_MIXER_H_
 #define SDL_MIXER_H_
@@ -36,14 +50,18 @@
 #include "SDL_version.h"
 #include "begin_code.h"
 
-/* Set up for C function definitions, even when using C++ */
+/* Set up for C function definitions, even when using C++
+ * 设置 C 函数定义，即使使用 C++ 时也是如此
+ */
 #ifdef __cplusplus
 extern "C" {
 #endif
 
 /**
  * Printable format: "%d.%d.%d", MAJOR, MINOR, PATCHLEVEL
+ * 可打印格式：“%d.%d.%d”、MAJOR、MINOR、PATCHLEVEL
  */
+//done
 #define SDL_MIXER_MAJOR_VERSION 2
 #define SDL_MIXER_MINOR_VERSION 8
 #define SDL_MIXER_PATCHLEVEL    0
@@ -51,7 +69,9 @@ extern "C" {
 /**
  * This macro can be used to fill a version structure with the compile-time
  * version of the SDL_mixer library.
+ * 该宏可用于使用 SDL_mixer 库的编译时版本填充版本结构。
  */
+//done
 #define SDL_MIXER_VERSION(X)                        \
 {                                                   \
     (X)->major = SDL_MIXER_MAJOR_VERSION;           \
@@ -59,29 +79,40 @@ extern "C" {
     (X)->patch = SDL_MIXER_PATCHLEVEL;              \
 }
 
-/* Backwards compatibility */
+/* Backwards compatibility
+ * 向后兼容性
+ */
+//done
 #define MIX_MAJOR_VERSION   SDL_MIXER_MAJOR_VERSION
 #define MIX_MINOR_VERSION   SDL_MIXER_MINOR_VERSION
 #define MIX_PATCHLEVEL      SDL_MIXER_PATCHLEVEL
 #define MIX_VERSION(X)      SDL_MIXER_VERSION(X)
 
+//done
 #if SDL_MIXER_MAJOR_VERSION < 3 && SDL_MAJOR_VERSION < 3
 /**
  *  This is the version number macro for the current SDL_mixer version.
+ *  这是当前 SDL_mixer 版本的版本号宏。
  *
  *  In versions higher than 2.9.0, the minor version overflows into
  *  the thousands digit: for example, 2.23.0 is encoded as 4300.
  *  This macro will not be available in SDL 3.x or SDL_mixer 3.x.
+ *  在高于 2.9.0 的版本中，次要版本会溢出到千位数：例如，2.23.0 编码为 4300。
+ *  该宏在 SDL 3.x 或 SDL_mixer 3.x 中不可用。
  *
  *  Deprecated, use SDL_MIXER_VERSION_ATLEAST or SDL_MIXER_VERSION instead.
+ *  已弃用，请改用 SDL_MIXER_VERSION_ATLEAST 或 SDL_MIXER_VERSION。
  */
+//done
 #define SDL_MIXER_COMPILEDVERSION \
     SDL_VERSIONNUM(SDL_MIXER_MAJOR_VERSION, SDL_MIXER_MINOR_VERSION, SDL_MIXER_PATCHLEVEL)
 #endif /* SDL_MIXER_MAJOR_VERSION < 3 && SDL_MAJOR_VERSION < 3 */
 
 /**
  *  This macro will evaluate to true if compiled with SDL_mixer at least X.Y.Z.
+ *  如果使用 SDL_mixer 至少 X.Y.Z 进行编译，则该宏的计算结果为 true。
  */
+//done
 #define SDL_MIXER_VERSION_ATLEAST(X, Y, Z) \
     ((SDL_MIXER_MAJOR_VERSION >= X) && \
      (SDL_MIXER_MAJOR_VERSION > X || SDL_MIXER_MINOR_VERSION >= Y) && \
@@ -89,22 +120,42 @@ extern "C" {
 
 /**
  * Query the version of SDL_mixer that the program is linked against.
+ * 查询程序链接的 SDL_mixer 版本。
  *
  * This function gets the version of the dynamically linked SDL_mixer library.
  * This is separate from the SDL_MIXER_VERSION() macro, which tells you what
  * version of the SDL_mixer headers you compiled against.
+ * 此函数获取动态链接的 SDL_mixer 库的版本。 这与 SDL_MIXER_VERSION() 宏是分开的，
+ * 它告诉您编译时所针对的 SDL_mixer 标头的版本。
  *
  * This returns static internal data; do not free or modify it!
+ * 这将返回静态内部数据； 不要释放或修改它！
  *
  * \returns a pointer to the version information.
+ * 指向版本信息的指针。
  *
  * \since This function is available since SDL_mixer 2.0.0.
+ * 此函数自 SDL_mixer 2.0.0 起可用。
  */
+/** gpt解释：
+ * 这行代码声明了一个外部函数 Mix_Linked_Version()，它返回一个指向 SDL_version
+ * 结构的常量指针。Mix_Linked_Version() 用于获取与当前链接的SDL_mixer库的版本信息。
+ * DECLSPEC 宏被用来指定函数的属性，即函数的可见性。在这里，DECLSPEC 被定义为
+ * __attribute__ ((visibility("default")))，这意味着该函数被设置为默认可见性。
+ * 在编译时，这个函数的符号将被导出，以便其他模块可以访问它。SDLCALL 是一个宏，
+ * 用于指定函数的调用约定，以确保正确的参数传递和返回值处理。在大多数情况下，它会被定义
+ * 为空或为 __cdecl。在这里，它可能是 __attribute__((cdecl)) 的别名，用于指定函数采用C调用约定。
+ * 总的来说，这行代码声明了一个函数 Mix_Linked_Version()，它返回一个指向 SDL_mixer 库版本信息的常量指针，
+ * 并且设置了适当的可见性和调用约定。
+*/
+//done
 extern DECLSPEC const SDL_version * SDLCALL Mix_Linked_Version(void);
 
 /**
  * Initialization flags
+ * 初始化标志
  */
+//done
 typedef enum
 {
     MIX_INIT_FLAC   = 0x00000001,
@@ -118,19 +169,26 @@ typedef enum
 
 /**
  * Initialize SDL_mixer.
+ * 初始化SDL_mixer。
  *
  * This function loads dynamic libraries that SDL_mixer needs, and prepares
  * them for use.
+ * 此函数加载 SDL_mixer 所需的动态库，并准备使用它们。
  *
  * Note that, unlike other SDL libraries, this call is optional! If you load a
  * music file, SDL_mixer will handle initialization on the fly. This function
  * will let you know, up front, whether a specific format will be available
  * for use.
+ * 请注意，与其他 SDL 库不同，此调用是可选的！ 如果您加载音乐文件，SDL_mixer
+ * 将即时处理初始化。 此函数将让您预先知道特定格式是否可供使用。
  *
  * Flags should be one or more flags from MIX_InitFlags OR'd together. It
  * returns the flags successfully initialized, or 0 on failure.
+ * 标志应该是 MIX_InitFlags 中的一个或多个标志或组合在一起。 它返回初始化成功的标志，
+ * 失败时返回 0。
  *
  * Currently, these flags are:
+ * 目前，这些标志是：
  *
  * - `MIX_INIT_FLAC`
  * - `MIX_INIT_MOD`
@@ -141,21 +199,28 @@ typedef enum
  * - `MIX_INIT_WAVPACK`
  *
  * More flags may be added in a future SDL_mixer release.
+ * 未来的 SDL_mixer 版本中可能会添加更多标志。
  *
  * This function may need to load external shared libraries to support various
  * codecs, which means this function can fail to initialize that support on an
  * otherwise-reasonable system if the library isn't available; this is not
  * just a question of exceptional circumstances like running out of memory at
  * startup!
+ * 该函数可能需要加载外部共享库来支持各种编解码器，这意味着如果该库不可用，该函数可能
+ * 无法在其他合理的系统上初始化该支持； 这不仅仅是启动时内存不足等特殊情况的问题！
  *
  * Note that you may call this function more than once to initialize with
  * additional flags. The return value will reflect both new flags that
  * successfully initialized, and also include flags that had previously been
  * initialized as well.
+ * 请注意，您可以多次调用此函数以使用其他标志进行初始化。 返回值将反映成功初始化的新标志，
+ * 并且还包括先前已初始化的标志。
  *
  * As this will return previously-initialized flags, it's legal to call this
  * with zero (no flags set). This is a safe no-op that can be used to query
  * the current initialization state without changing it at all.
+ * 由于这将返回先前初始化的标志，因此用零（未设置标志）调用它是合法的。
+ * 这是一个安全的无操作，可用于查询当前初始化状态而无需更改它。
  *
  * Since this returns previously-initialized flags as well as new ones, and
  * you can call this with zero, you should not check for a zero return value
@@ -164,6 +229,11 @@ typedef enum
  * data in a specific format, this might be a fatal error. If you're a generic
  * media player, perhaps you are fine with only having WAV and MP3 support and
  * can live without Opus playback, even if you request support for everything.
+ * 由于这会返回先前初始化的标志以及新标志，并且您可以使用零来调用它，因此您不应检查零
+ * 返回值来确定错误条件。 相反，您应该检查以确保返回值中设置了您需要的所有标志。 如果
+ * 您的游戏包含特定格式的数据，这可能是一个致命错误。 如果您是一名普通媒体播放器，也许
+ * 您只需要 WAV 和 MP3 支持就可以了，并且可以在没有 Opus 播放的情况下生活，即使您请求
+ * 对所有内容的支持。
  *
  * Unlike other SDL satellite libraries, calls to Mix_Init do not stack; a
  * single call to Mix_Quit() will deinitialize everything and does not have to
@@ -171,15 +241,23 @@ typedef enum
  * best practices to have a single Mix_Init and Mix_Quit call in your program.
  * While this isn't required, be aware of the risks of deviating from that
  * behavior.
+ * 与其他 SDL 卫星库不同，对 Mix_Init 的调用不会堆栈； 对 Mix_Quit() 的单个调用将
+ * 取消初始化所有内容，并且不必与匹配的 Mix_Init 调用配对。 因此，在程序中使用单个
+ * Mix_Init 和 Mix_Quit 调用被认为是最佳实践。 虽然这不是必需的，但请注意偏离该行为的风险。
  *
  * After initializing SDL_mixer, the next step is to open an audio device to
  * prepare to play sound (with Mix_OpenAudio() or Mix_OpenAudioDevice()), and
  * load audio data to play with that device.
+ * 初始化 SDL_mixer 后，下一步是打开音频设备以准备播放声音（使用 Mix_OpenAudio()
+ * 或 Mix_OpenAudioDevice()），并加载音频数据以使用该设备播放。
  *
  * \param flags initialization flags, OR'd together.
+ * 初始化标志，或运算在一起。
  * \returns all currently initialized flags.
+ * 所有当前初始化的标志。
  *
  * \since This function is available since SDL_mixer 2.0.0.
+ * 此功能自 SDL_mixer 2.0.0 起可用。
  *
  * \sa Mix_Quit
  */
@@ -269,18 +347,24 @@ typedef struct _Mix_Music Mix_Music;
 
 /**
  * Open the default audio device for playback.
+ * 打开默认音频设备进行播放。
  *
  * An audio device is what generates sound, so the app must open one to make
  * noise.
+ * 音频设备是产生声音的设备，因此应用程序必须打开一个设备才能发出声音。
  *
  * This function will check if SDL's audio system is initialized, and if not,
  * it will initialize it by calling `SDL_Init(SDL_INIT_AUDIO)` on your behalf.
  * You are free to (and encouraged to!) initialize it yourself before calling
  * this function, as this gives your program more control over the process.
+ * 该函数将检查SDL的音频系统是否已初始化，如果没有，它将代表您调用`SDL_Init(SDL_INIT_AUDIO)`
+ * 来初始化它。 在调用此函数之前，您可以自由（并鼓励！）自行初始化它，因为这使您的程序可以更好地控制该过程。
  *
  * This function might cover all of an application's needs, but for those that
  * need more flexibility, the more powerful version of this function is
  * Mix_OpenAudioDevice(). This function is equivalent to calling:
+ * 该函数可能满足应用程序的所有需求，但对于那些需要更多灵活性的人来说，该函数的更强大版本
+ * 是 Mix_OpenAudioDevice()。 该函数相当于调用：
  *
  * ```c
  * Mix_OpenAudioDevice(frequency, format, nchannels, chunksize, NULL,
@@ -292,6 +376,8 @@ typedef struct _Mix_Music Mix_Music;
  * device, and your data isn't in a specific format, the values you use here
  * can just be reasonable defaults. SDL_mixer will convert audio data you feed
  * it to the correct format on demand.
+ * 如果您不是特别关心音频设备的具体情况，并且您的数据不是特定格式，则此处使用的值可以是
+ * 合理的默认值。 SDL_mixer 将根据需要将您提供的音频数据转换为正确的格式。
  *
  * That being said, if you have control of your audio data and you know its
  * format ahead of time, you may save CPU time by opening the audio device in
@@ -301,22 +387,33 @@ typedef struct _Mix_Music Mix_Music;
  * settings, you might have to be careful to make everything match, but your
  * own data is often easier to control, so aim to open the device for what you
  * need.
+ * 话虽这么说，如果您可以控制音频数据并且提前知道其格式，则可以通过以确切的格式打开
+ * 音频设备来节省 CPU 时间，这样 SDL_mixer 就不必花时间在幕后转换任何内容，并且
+ * 可以直接将数据传递到硬件。 在某些硬件仅支持特定设置的平台上，您可能必须小心地使所有
+ * 内容匹配，但您自己的数据通常更容易控制，因此旨在根据您的需要打开设备。
  *
  * The other reason to care about specific formats: if you plan to touch the
  * mix buffer directly (with Mix_SetPostMix, a registered effect, or
  * Mix_HookMusic), you might have code that expects it to be in a specific
  * format, and you should specify that here.
+ * 关心特定格式的另一个原因：如果您打算直接接触混合缓冲区（使用 Mix_SetPostMix、注册效果
+ * 或 Mix_HookMusic），您可能有代码期望它采用特定格式，并且您应该在此处指定 。
  *
  * The audio device frequency is specified in Hz; in modern times, 48000 is
  * often a reasonable default.
+ * 音频设备频率以 Hz 为单位指定； 在现代，48000 通常是一个合理的默认值。
  *
  * The audio device format is one of SDL's AUDIO_* constants. AUDIO_S16SYS
  * (16-bit audio) is probably a safe default. More modern systems may prefer
  * AUDIO_F32SYS (32-bit floating point audio).
+ * 音频设备格式是 SDL 的 AUDIO_* 常量之一。 AUDIO_S16SYS（16 位音频）可能是安全的默认值。
+ * 更现代的系统可能更喜欢 AUDIO_F32SYS（32 位浮点音频）。
  *
  * The audio device channels are generally 1 for mono output, or 2 for stereo,
  * but the brave can try surround sound configs with 4 (quad), 6 (5.1), 7
  * (6.1) or 8 (7.1).
+ * 音频设备通道通常为 1 个用于单声道输出，或 2 个用于立体声，但勇敢者可以尝试使用
+ * 4（四声道）、6（5.1）、7（6.1）或 8（7.1）的环绕声配置。
  *
  * The audio device's chunk size is the number of sample frames (one sample
  * per frame for mono output, two samples per frame in a stereo setup, etc)
@@ -324,57 +421,81 @@ typedef struct _Mix_Music Mix_Music;
  * latency, but you risk dropouts if it gets too low. 2048 is often a
  * reasonable default, but your app might want to experiment with 1024 or
  * 4096.
+ * 音频设备的块大小是一次馈送到设备的样本帧的数量（单声道输出每帧一个样本，
+ * 立体声设置中每帧两个样本等）。 数字越低，延迟越短，但如果数字太低，您将面临丢失的风险。
+ * 2048 通常是合理的默认值，但您的应用可能想要尝试使用 1024 或 4096。
  *
  * You may only have one audio device open at a time; if you want to change a
  * setting, you must close the device and reopen it, which is not something
  * you can do seamlessly during playback.
+ * 您一次只能打开一个音频设备； 如果您想更改设置，则必须关闭设备并重新打开它，
+ * 这不是您可以在播放过程中无缝执行的操作。
  *
  * This function does not allow you to select a specific audio device on the
  * system, it always chooses the best default it can on your behalf (which, in
  * many cases, is exactly what you want anyhow). If you must choose a specific
  * device, you can do so with Mix_OpenAudioDevice() instead.
+ * 此函数不允许您选择系统上的特定音频设备，它总是代表您选择最佳的默认设备（在许多情况下，这正是您想要的）。
+ * 如果必须选择特定设备，可以使用 Mix_OpenAudioDevice() 来实现。
  *
  * If this function reports success, you are ready to start making noise! Load
  * some audio data and start playing!
+ * 如果此函数报告成功，那么您就可以开始制造噪音了！ 加载一些音频数据并开始播放！
  *
  * The app can use Mix_QuerySpec() to determine the final device settings.
+ * 应用程序可以使用 Mix_QuerySpec() 来确定最终的设备设置。
  *
  * When done with an audio device, probably at the end of the program, the app
  * should dispose of the device with Mix_CloseAudio().
+ * 当使用音频设备时，可能在程序结束时，应用程序应使用 Mix_CloseAudio() 处置该设备。
  *
  * \param frequency the frequency to playback audio at (in Hz).
+ * 播放音频的频率（以 Hz 为单位）。
  * \param format audio format, one of SDL's AUDIO_* values.
+ * 音频格式，SDL 的 AUDIO_* 值之一。
  * \param channels number of channels (1 is mono, 2 is stereo, etc).
+ * 通道数（1 是单声道，2 是立体声，等等）。
  * \param chunksize audio buffer size in sample FRAMES (total samples divided
  *                  by channel count).
+ * 样本帧中的音频缓冲区大小（样本总数除以通道数）。
  * \returns 0 if successful, -1 on error.
+ * 如果成功则为 0，如果错误则为 -1。
  *
  * \since This function is available since SDL_mixer 2.0.0.
+ * 此函数自 SDL_mixer 2.0.0 起可用。
  *
  * \sa Mix_OpenAudioDevice
  * \sa Mix_CloseAudio
  */
+//done
 extern DECLSPEC int SDLCALL Mix_OpenAudio(int frequency, Uint16 format, int channels, int chunksize);
 
 
 /**
  * Open a specific audio device for playback.
+ * 打开特定的音频设备进行播放。
  *
  * (A slightly simpler version of this function is available in
  * Mix_OpenAudio(), which still might meet most applications' needs.)
+ * （Mix_OpenAudio() 中提供了此函数的稍微简单的版本，它仍然可以满足大多数应用程序的需求。）
  *
  * An audio device is what generates sound, so the app must open one to make
  * noise.
+ * 音频设备是产生声音的设备，因此应用程序必须打开一个设备才能发出声音。
  *
  * This function will check if SDL's audio system is initialized, and if not,
  * it will initialize it by calling `SDL_Init(SDL_INIT_AUDIO)` on your behalf.
  * You are free to (and encouraged to!) initialize it yourself before calling
  * this function, as this gives your program more control over the process.
+ * 该函数将检查SDL的音频系统是否已初始化，如果没有，它将代表您调用`SDL_Init(SDL_INIT_AUDIO)`
+ * 来初始化它。 在调用此函数之前，您可以自由（并鼓励！）自行初始化它，因为这使您的程序可以更好地控制该过程。
  *
  * If you aren't particularly concerned with the specifics of the audio
  * device, and your data isn't in a specific format, the values you use here
  * can just be reasonable defaults. SDL_mixer will convert audio data you feed
  * it to the correct format on demand.
+ * 如果您不是特别关心音频设备的具体情况，并且您的数据不是特定格式，则此处使用的值可以是
+ * 合理的默认值。 SDL_mixer 将根据需要将您提供的音频数据转换为正确的格式。
  *
  * That being said, if you have control of your audio data and you know its
  * format ahead of time, you can save CPU time by opening the audio device in
@@ -384,22 +505,33 @@ extern DECLSPEC int SDLCALL Mix_OpenAudio(int frequency, Uint16 format, int chan
  * settings, you might have to be careful to make everything match, but your
  * own data is often easier to control, so aim to open the device for what you
  * need.
+ * 话虽这么说，如果您可以控制音频数据并且提前知道其格式，则可以通过以确切的格式打开
+ * 音频设备来节省 CPU 时间，这样 SDL_mixer 就不必花时间在幕后转换任何内容，并且
+ * 可以直接将数据传递到硬件。 在某些硬件仅支持特定设置的平台上，您可能必须小心地使
+ * 所有内容匹配，但您自己的数据通常更容易控制，因此旨在根据您的需要打开设备。
  *
  * The other reason to care about specific formats: if you plan to touch the
  * mix buffer directly (with Mix_SetPostMix, a registered effect, or
  * Mix_HookMusic), you might have code that expects it to be in a specific
  * format, and you should specify that here.
+ * 关心特定格式的另一个原因：如果您打算直接接触混合缓冲区（使用 Mix_SetPostMix、注册效果
+ * 或 Mix_HookMusic），您可能有代码期望它采用特定格式，并且您应该在此处指定 。
  *
  * The audio device frequency is specified in Hz; in modern times, 48000 is
  * often a reasonable default.
+ * 音频设备频率以 Hz 为单位指定； 在现代，48000 通常是一个合理的默认值。
  *
  * The audio device format is one of SDL's AUDIO_* constants. AUDIO_S16SYS
  * (16-bit audio) is probably a safe default. More modern systems may prefer
  * AUDIO_F32SYS (32-bit floating point audio).
+ * 音频设备格式是 SDL 的 AUDIO_* 常量之一。 AUDIO_S16SYS（16 位音频）可能是安全的默认值。
+ * 更现代的系统可能更喜欢 AUDIO_F32SYS（32 位浮点音频）。
  *
  * The audio device channels are generally 1 for mono output, or 2 for stereo,
  * but the brave can try surround sound configs with 4 (quad), 6 (5.1), 7
  * (6.1) or 8 (7.1).
+ * 音频设备通道通常为 1 个用于单声道输出，或 2 个用于立体声，但勇敢者可以尝试使用
+ * 4（四声道）、6（5.1）、7（6.1）或 8（7.1）的环绕声配置。
  *
  * The audio device's chunk size is the number of sample frames (one sample
  * per frame for mono output, two samples per frame in a stereo setup, etc)
@@ -407,10 +539,15 @@ extern DECLSPEC int SDLCALL Mix_OpenAudio(int frequency, Uint16 format, int chan
  * latency, but you risk dropouts if it gets too low. 2048 is often a
  * reasonable default, but your app might want to experiment with 1024 or
  * 4096.
+ * 音频设备的块大小是一次馈送到设备的样本帧的数量（单声道输出每帧一个样本，
+ * 立体声设置中每帧两个样本等）。 数字越低，延迟越短，但如果数字太低，您将面临丢失的风险。
+ * 2048 通常是合理的默认值，但您的应用可能想要尝试使用 1024 或 4096。
  *
  * You may only have one audio device open at a time; if you want to change a
  * setting, you must close the device and reopen it, which is not something
  * you can do seamlessly during playback.
+ * 您一次只能打开一个音频设备； 如果您想更改设置，则必须关闭设备并重新打开它，
+ * 这不是您可以在播放过程中无缝执行的操作。
  *
  * This function allows you to select specific audio hardware on the system
  * with the `device` parameter. If you specify NULL, SDL_mixer will choose the
@@ -420,6 +557,11 @@ extern DECLSPEC int SDLCALL Mix_OpenAudio(int frequency, Uint16 format, int chan
  * available devices and then SDL_GetAudioDeviceName() in a loop to obtain a
  * list. If you do this, be sure to call `SDL_Init(SDL_INIT_AUDIO)` first to
  * initialize SDL's audio system!
+ * 此功能允许您使用“device”参数选择系统上的特定音频硬件。 如果您指定 NULL，
+ * SDL_mixer 将代表您选择最佳默认值（在许多情况下，这正是您想要的）。 SDL_mixer
+ * 不提供确定要打开的设备名称的机制，但您可以使用 SDL_GetNumAudioDevices() 获取
+ * 可用设备的计数，然后在循环中使用 SDL_GetAudioDeviceName() 获取列表。 如果您这样做，
+ * 请务必先调用 `SDL_Init(SDL_INIT_AUDIO)` 来初始化 SDL 的音频系统！
  *
  * The `allowed_changes` parameter specifies what settings are flexible. These
  * are the `SDL_AUDIO_ALLOW_*` flags from SDL. These tell SDL_mixer that the
@@ -433,32 +575,51 @@ extern DECLSPEC int SDLCALL Mix_OpenAudio(int frequency, Uint16 format, int chan
  * data behind the scenes between what the app demands and what the hardware
  * requires. If your app needs precisely what is requested, specify zero for
  * `allowed_changes`.
+ * “allowed_changes”参数指定哪些设置是灵活的。 这些是来自 SDL 的“SDL_AUDIO_ALLOW_*”标志。
+ * 这些告诉 SDL_mixer 应用程序不介意特定设置是否发生更改。 例如，应用程序可能需要 Sint16
+ * 格式的立体声数据，但如果采样率或块大小发生变化，应用程序可以处理该情况。
+ * 在这种情况下，应用程序将指定“SDL_AUDIO_ALLOW_FORMAT_CHANGE|SDL_AUDIO_ALLOW_SAMPLES_CHANGE”。
+ * 在这种情况下，如果系统的硬件需要除请求的格式之外的其他格式，SDL_mixer 可以选择硬件而
+ * 不是应用程序需要的格式。 如果未指定“SDL_AUDIO_ALLOW_”标志，SDL_mixer 必须在后台在应用程序
+ * 要求和硬件要求之间转换数据。 如果您的应用程序确实需要所请求的内容，请为“allowed_changes”指定零。
  *
  * If changes were allowed, the app can use Mix_QuerySpec() to determine the
  * final device settings.
+ * 如果允许更改，应用程序可以使用 Mix_QuerySpec() 来确定最终的设备设置。
  *
  * If this function reports success, you are ready to start making noise! Load
  * some audio data and start playing!
+ * 如果此函数报告成功，那么您就可以开始制造噪音了！ 加载一些音频数据并开始播放！
  *
  * When done with an audio device, probably at the end of the program, the app
  * should dispose of the device with Mix_CloseDevice().
+ * 当使用音频设备时，可能在程序结束时，应用程序应使用 Mix_CloseDevice() 处置该设备。
  *
  * \param frequency the frequency to playback audio at (in Hz).
+ * 播放音频的频率（以 Hz 为单位）。
  * \param format audio format, one of SDL's AUDIO_* values.
+ * 音频格式，SDL 的 AUDIO_* 值之一。
  * \param channels number of channels (1 is mono, 2 is stereo, etc).
+ * 通道数（1 是单声道，2 是立体声，等等）。
  * \param chunksize audio buffer size in sample FRAMES (total samples divided
  *                  by channel count).
+ * 样本帧中的音频缓冲区大小（样本总数除以通道数）。
  * \param device the device name to open, or NULL to choose a reasonable
  *               default.
+ * 要打开的设备名称，或 NULL 以选择合理的默认值。
  * \param allowed_changes Allow change flags (see SDL_AUDIO_ALLOW_* flags)
+ * 允许更改标志（请参阅 SDL_AUDIO_ALLOW_* 标志）
  * \returns 0 if successful, -1 on error.
+ * 如果成功则为 0，如果错误则为 -1。
  *
  * \since This function is available since SDL_mixer 2.0.2.
+ * 该功能自 SDL_mixer 2.0.2 起可用。
  *
  * \sa Mix_OpenAudio
  * \sa Mix_CloseDevice
  * \sa Mix_QuerySpec
  */
+//done
 extern DECLSPEC int SDLCALL Mix_OpenAudioDevice(int frequency, Uint16 format, int channels, int chunksize, const char* device, int allowed_changes);
 
 /**

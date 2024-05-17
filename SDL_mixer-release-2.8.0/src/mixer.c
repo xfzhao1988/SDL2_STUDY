@@ -157,6 +157,7 @@ void add_chunk_decoder(const char *decoder)
 }
 
 /* rcg06192001 get linked library's version. */
+//done
 const SDL_version *Mix_Linked_Version(void)
 {
     static SDL_version linked_version;
@@ -538,6 +539,7 @@ int Mix_OpenAudioDevice(int frequency, Uint16 format, int nchannels, int chunksi
     return 0;
 }
 
+/* 打开具有某种所需音频格式的混音器 */
 /* Open the mixer with a certain desired audio format */
 int Mix_OpenAudio(int frequency, Uint16 format, int nchannels, int chunksize)
 {

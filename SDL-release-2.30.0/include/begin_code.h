@@ -51,7 +51,9 @@
 #  endif
 #endif
 
-/* Some compilers use a special export keyword */
+/* Some compilers use a special export keyword
+ * 一些编译器使用特殊的导出关键字
+ */
 #ifndef DECLSPEC
 # if defined(__WIN32__) || defined(__WINRT__) || defined(__CYGWIN__) || defined(__GDK__)
 #  ifdef DLL_EXPORT
@@ -67,6 +69,15 @@
 #   endif
 # else
 #  if defined(__GNUC__) && __GNUC__ >= 4
+/**
+ * 这行代码定义了一个宏 DECLSPEC，它被设置为 __attribute__ ((visibility("default")))。
+ * 在这里，__attribute__ 是GCC和一些兼容的编译器提供的一个特性，用于设置函数、变量或类型的属性。
+ * ((visibility("default"))) 是一个属性参数，它告诉编译器将被修饰的符号设置为默认可见性。
+ * 在许多情况下，这意味着符号可以被共享目标文件或共享库中的其他目标文件访问。这种方式通常用于声明库
+ * 中的公共函数或变量，以便它们在链接时可以被其他模块访问。在Windows平台，__declspec(dllexport)
+ * 和__declspec(dllimport)用于实现类似的功能，而在Linux平台，__attribute__ ((visibility("default")))
+ * 用于此目的。
+*/
 #   define DECLSPEC __attribute__ ((visibility("default")))
 #  else
 #   define DECLSPEC
@@ -74,7 +85,9 @@
 # endif
 #endif
 
-/* By default SDL uses the C calling convention */
+/* By default SDL uses the C calling convention
+ * 默认情况下，SDL 使用 C 调用约定
+ */
 #ifndef SDLCALL
 #if (defined(__WIN32__) || defined(__WINRT__) || defined(__GDK__)) && !defined(__GNUC__)
 #define SDLCALL __cdecl
