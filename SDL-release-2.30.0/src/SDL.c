@@ -527,7 +527,9 @@ void SDL_Quit(void)
     SDL_bInMainQuit = SDL_FALSE;
 }
 
-/* Get the library version number */
+/* Get the library version number
+ * 获取库版本号
+ */
 void SDL_GetVersion(SDL_version *ver)
 {
     static SDL_bool check_hint = SDL_TRUE;

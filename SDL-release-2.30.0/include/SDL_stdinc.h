@@ -23,6 +23,7 @@
  *  \file SDL_stdinc.h
  *
  *  This is a general header that includes C language support.
+ *  这是包含 C 语言支持的通用头文件。
  */
 
 #ifndef SDL_stdinc_h_
@@ -168,11 +169,15 @@ char *alloca();
 
 /**
  *  \name Basic data types
+ * 基础数据类型
+ *
  */
 /* @{ */
 
 #ifdef __CC_ARM
-/* ARM's compiler throws warnings if we use an enum: like "SDL_bool x = a < b;" */
+/* ARM's compiler throws warnings if we use an enum: like "SDL_bool x = a < b;"
+ * 如果我们使用枚举，ARM 的编译器会抛出警告：如“SDL_bool x = a < b;”
+ */
 #define SDL_FALSE 0
 #define SDL_TRUE 1
 typedef int SDL_bool;

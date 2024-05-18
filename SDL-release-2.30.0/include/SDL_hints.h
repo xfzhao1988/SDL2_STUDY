@@ -23,17 +23,22 @@
  *  \file SDL_hints.h
  *
  *  Official documentation for SDL configuration variables
+ *  SDL 配置变量的官方文档
  *
  *  This file contains functions to set and get configuration hints,
  *  as well as listing each of them alphabetically.
+ *  该文件包含设置和获取配置提示的函数，并按字母顺序列出每个提示。
  *
  *  The convention for naming hints is SDL_HINT_X, where "SDL_X" is
  *  the environment variable that can be used to override the default.
+ *  命名提示的约定是 SDL_HINT_X，其中“SDL_X”是可用于覆盖默认值的环境变量。
  *
  *  In general these hints are just that - they may or may not be
  *  supported or applicable on any given platform, but they provide
  *  a way for an application or user to give the library a hint as
  *  to how they would like the library to work.
+ *  一般来说，这些提示只是 - 它们可能或可能不支持或适用于任何给定的平台，
+ *  但它们为应用程序或用户提供了一种方式，向库提供他们希望库如何工作的提示。
  */
 
 #ifndef SDL_hints_h_
@@ -42,7 +47,9 @@
 #include "SDL_stdinc.h"
 
 #include "begin_code.h"
-/* Set up for C function definitions, even when using C++ */
+/* Set up for C function definitions, even when using C++
+ * 设置 C 函数定义，即使使用 C++ 时也是如此
+ */
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -2702,6 +2709,7 @@ extern "C" {
 
 /**
  *  \brief  An enumeration of hint priorities
+ * 提示优先级的枚举
  */
 typedef enum
 {
@@ -2785,30 +2793,41 @@ extern DECLSPEC void SDLCALL SDL_ResetHints(void);
 
 /**
  * Get the value of a hint.
+ * 获取提示的值。
  *
  * \param name the hint to query
+ * 查询提示
  * \returns the string value of a hint or NULL if the hint isn't set.
+ * 提示的字符串值，如果未设置提示，则为 NULL。
  *
  * \since This function is available since SDL 2.0.0.
+ * 此功能自 SDL 2.0.0 起可用。
  *
  * \sa SDL_SetHint
  * \sa SDL_SetHintWithPriority
  */
+//done
 extern DECLSPEC const char * SDLCALL SDL_GetHint(const char *name);
 
 /**
  * Get the boolean value of a hint variable.
+ * 获取提示变量的布尔值。
  *
  * \param name the name of the hint to get the boolean value from
+ * 从中获取布尔值的提示名称
  * \param default_value the value to return if the hint does not exist
+ * 如果提示不存在则返回值
  * \returns the boolean value of a hint or the provided default value if the
  *          hint does not exist.
+ * 提示的布尔值或提供的默认值（如果提示不存在）。
  *
  * \since This function is available since SDL 2.0.5.
+ * 此功能自 SDL 2.0.5 起可用。
  *
  * \sa SDL_GetHint
  * \sa SDL_SetHint
  */
+//done
 extern DECLSPEC SDL_bool SDLCALL SDL_GetHintBoolean(const char *name, SDL_bool default_value);
 
 /**

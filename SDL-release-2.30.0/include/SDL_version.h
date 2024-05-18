@@ -164,17 +164,23 @@ typedef struct SDL_version
 
 /**
  * Get the version of SDL that is linked against your program.
+ * 获取与您的程序链接的 SDL 版本。
  *
  * If you are linking to SDL dynamically, then it is possible that the current
  * version will be different than the version you compiled against. This
  * function returns the current version, while SDL_VERSION() is a macro that
  * tells you what version you compiled with.
+ * 如果您动态链接到 SDL，则当前版本可能与您编译的版本不同。 该函数返回当前版本，
+ * 而 SDL_VERSION() 是一个宏，可以告诉您编译时使用的版本。
  *
  * This function may be called safely at any time, even before SDL_Init().
+ * 该函数可以随时安全地调用，甚至在 SDL_Init() 之前也是如此。
  *
  * \param ver the SDL_version structure that contains the version information
+ * 包含版本信息的 SDL_version 结构
  *
  * \since This function is available since SDL 2.0.0.
+ * 此功能自 SDL 2.0.0 起可用。
  *
  * \sa SDL_GetRevision
  */

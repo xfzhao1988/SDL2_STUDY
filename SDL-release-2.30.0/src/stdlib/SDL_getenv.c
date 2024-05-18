@@ -166,7 +166,10 @@ int SDL_setenv(const char *name, const char *value, int overwrite)
 }
 #endif
 
-/* Retrieve a variable named "name" from the environment */
+/* Retrieve a variable named "name" from the environment
+ * 从环境中检索名为“name”的变量
+ */
+//done
 #if defined(HAVE_GETENV)
 char *SDL_getenv(const char *name)
 {
@@ -214,7 +217,7 @@ char *SDL_getenv(const char *name)
     size_t len, i;
     char *value;
 
-    /* Input validation */
+    /* Input validation 输入验证 */
     if (!name || *name == '\0') {
         return NULL;
     }

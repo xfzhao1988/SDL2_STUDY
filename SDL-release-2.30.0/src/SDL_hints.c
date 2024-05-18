@@ -34,6 +34,7 @@ typedef struct SDL_HintWatch
     struct SDL_HintWatch *next;
 } SDL_HintWatch;
 
+//done
 typedef struct SDL_Hint
 {
     char *name;
@@ -156,6 +157,7 @@ SDL_bool SDL_SetHint(const char *name, const char *value)
     return SDL_SetHintWithPriority(name, value, SDL_HINT_NORMAL);
 }
 
+//done
 const char *SDL_GetHint(const char *name)
 {
     const char *env;
