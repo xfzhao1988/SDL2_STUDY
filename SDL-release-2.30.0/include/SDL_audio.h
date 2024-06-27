@@ -166,11 +166,73 @@ typedef void (SDLCALL * SDL_AudioCallback) (void *userdata, Uint8 * stream,
                                             int len);
 
 /**
+FL FR LFE BL BR FC SL SR BC在音响和声学领域表示什么？是什么的缩写
+ChatGPT
+在音响和声学领域，这些缩写表示不同的扬声器位置和功能，通常用于描述环绕声系统的配置。具体来说，它们的含义如下：
+
+FL: Front Left（前左）
+FR: Front Right（前右）
+LFE: Low-Frequency Effects（低频效果），通常指低音炮
+BL: Back Left（后左）
+BR: Back Right（后右）
+FC: Front Center（前中）
+SL: Surround Left（环绕左）
+SR: Surround Right（环绕右）
+BC: Back Center（后中）
+
+这些缩写用于描述家庭影院或专业音响系统中的扬声器布局，以实现最佳的环绕声体验。具体解释如下：
+
+FL (Front Left): 放置在观众前方左侧的扬声器。
+FR (Front Right): 放置在观众前方右侧的扬声器。
+LFE (Low-Frequency Effects): 专门处理低频音效的扬声器，通常是低音炮。
+BL (Back Left): 放置在观众后方左侧的扬声器。
+BR (Back Right): 放置在观众后方右侧的扬声器。
+FC (Front Center): 放置在观众前方中央的扬声器，主要用于播放对话和中心声效。
+SL (Surround Left): 放置在观众左侧的环绕扬声器，提供侧面环绕声效。
+SR (Surround Right): 放置在观众右侧的环绕扬声器，提供侧面环绕声效。
+BC (Back Center): 放置在观众后方中央的扬声器，用于增强后方环绕声效。
+这种布局有助于创建一个全方位的音效环境，常用于家庭影院和专业影院系统，以提供身临其境的音频体验。
+*/
+
+/**
+什么事环绕扬声器？左侧的环绕扬声器和右侧环绕扬声器有啥区别
+
+ChatGPT
+环绕扬声器是音响系统中用于创建环绕声效果的扬声器。它们通过将声音从不同方向传送到听众，提供更逼真和沉浸式的音频体验，
+特别是在电影、游戏和音乐中。环绕扬声器通常放置在听众的侧面或后方，与前置扬声器（FL, FR, FC）和低频效果扬声器（LFE）一起工作。
+
+环绕扬声器的作用
+环绕扬声器的主要作用是增强声音的空间感和方向感，使听众感觉到声音来自四面八方，而不仅仅是从前方。通过环绕声，
+观众可以更清晰地感受到场景中的细节和环境音效，如子弹飞过耳边的声音、观众的掌声或自然环境中的细微声音。
+
+左侧环绕扬声器（SL）和右侧环绕扬声器（SR）的区别
+位置不同：左侧环绕扬声器（SL）放置在听众的左侧，而右侧环绕扬声器（SR）放置在听众的右侧。
+声道不同：左侧环绕扬声器负责播放来自音频源左侧的环绕声信号，而右侧环绕扬声器则播放来自音频源右侧的环绕声信号。
+
+布局示例
+一个典型的 7.1 环绕声系统布局如下：
+FL (Front Left): 前左扬声器，放置在电视或投影屏幕前方的左侧。
+FR (Front Right): 前右扬声器，放置在电视或投影屏幕前方的右侧。
+FC (Front Center): 前中扬声器，放置在电视或投影屏幕的正前方，通常用于播放对话。
+LFE (Low-Frequency Effects): 低音炮，放置在房间的任意位置，处理低频音效。
+SL (Surround Left): 环绕左扬声器，放置在听众的左侧或稍微靠后的位置。
+SR (Surround Right): 环绕右扬声器，放置在听众的右侧或稍微靠后的位置。
+BL (Back Left): 后左扬声器，放置在听众的后方左侧。
+BR (Back Right): 后右扬声器，放置在听众的后方右侧。
+BC (Back Center): 后中扬声器，放置在听众的后方中央位置（仅在 7.1 系统中使用）。
+总结
+左侧和右侧环绕扬声器的主要区别在于它们的位置和所处理的声道信号。正确放置和调整环绕扬声器能够大幅提升音频系统的效果，
+使得声音体验更加丰富和身临其境。
+*/
+
+/**
  *  The calculated values in this structure are calculated by SDL_OpenAudio().
+ *  该结构中的计算值由SDL_OpenAudio()计算得出。
  *
  *  For multi-channel audio, the default SDL channel mapping is:
+ *  对于多通道音频，默认的 SDL 通道映射是：
  *  2:  FL  FR                          (stereo)
- *  3:  FL  FR LFE                      (2.1 surround)
+ *  3:  FL  FR LFE                      (2.1 surround) //2.1 环绕声
  *  4:  FL  FR  BL  BR                  (quad)
  *  5:  FL  FR LFE  BL  BR              (4.1 surround)
  *  6:  FL  FR  FC LFE  SL  SR          (5.1 surround - last two can also be BL BR)
